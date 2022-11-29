@@ -44,9 +44,16 @@ export class PetsService {
     }
 
 
-    deletePet(id: string): Pet[] {
+    deletePet(id: string): Pet {
+        const index = this.pets.findIndex(s => s.pet_id == id);
+        if(index < 0){
+            throw new NotFoundException('Could not find matching ID');
+        }
+        const deletedPet : Pet = this.pets[index]
+        
         const data = this.pets.filter(s => s.pet_id != id)
         this.pets = data
-        return [...this.pets];
+        
+        return deletedPet;
     }
 }

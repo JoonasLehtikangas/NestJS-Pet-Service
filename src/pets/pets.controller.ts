@@ -62,7 +62,7 @@ export class PetsController {
     @ApiResponse({status: 404, description: "Pet ID not found!"})
     deletePet(
         @Param('id') id: string,
-    ): Pet[]{
+    ): Pet{
         return this.petsService.deletePet(id);
     }
 
