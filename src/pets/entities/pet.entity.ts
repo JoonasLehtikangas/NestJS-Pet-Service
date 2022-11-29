@@ -1,16 +1,16 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export class Pet {
-    @ApiProperty()
+    @ApiProperty({ example: "ekDDEq6UURBHk5s5MRgoQ", description: "ID of the Pet"})
     pet_id: string;
     
-    @ApiProperty()
+    @ApiProperty({ example: "Kitty", description: "Name of the Pet"})
     name: string;
 
-    @ApiProperty()
+    @ApiProperty({ example: "Big angry cat", description: "Characteristics of the Pet"})
     description: string;
 
-    @ApiProperty()
+    @ApiProperty({ example: "30-04-2001"})
     date_of_birth: string;
 
     constructor(pet_id: string, name: string, description: string, date_of_birth: string) {
