@@ -10,6 +10,8 @@ import { PetsService } from './pets.service';
 export class PetsController {
     constructor(private readonly petsService: PetsService) {}
 
+    // listens POST request from localhost:3000/pets
+    // And calls petsService.insertPet function
     @Post()
     @ApiOperation({ summary: "Create a Pet"})
     @ApiCreatedResponse({
@@ -18,14 +20,13 @@ export class PetsController {
         type: Pet
     })
     createPet(
-        // @Body('name') name: string,
-        // @Body('description') desc: string,
-        // @Body('date_of_birth') date_of_birth: string
         @Body() CreatePetDto: CreatePetDto
     ): Pet {
         return this.petsService.insertPet(CreatePetDto);
     }
     
+    // listens GET request from localhost:3000/pets
+    // And calls petsService.getPets function
     @Get()
     @ApiOperation({ summary: "Get all Pets"})
     @ApiResponse({
@@ -37,6 +38,8 @@ export class PetsController {
         return this.petsService.getPets();
     }
 
+    // listens GET request from localhost:3000/pets/ID
+    // And calls petsService.getSinglePet function
     @Get(':id')
     @ApiOperation({ summary: "Get a single Pet"})
     @ApiResponse({status: 200, description: "OK, Pet found", type: Pet})
@@ -45,6 +48,8 @@ export class PetsController {
         return this.petsService.getSinglePet(id);
     }
 
+    // listens PATCH request from localhost:3000/pets/ID
+    // And calls petsService.updateSignlePet function
     @Patch(':id')
     @ApiOperation({ summary: "Update Pet's data"})
     @ApiResponse({status: 200, description: "OK, Pet updated", type: Pet})
@@ -56,6 +61,8 @@ export class PetsController {
         return this.petsService.updateSignlePet(id, UpdatePetDto);
     }
 
+    // listens DELETE request from localhost:3000/pets/ID
+    // And calls petsService.deletePet function
     @Delete(':id')
     @ApiOperation({ summary: "Delete Pet"})
     @ApiResponse({status: 200, description: "OK, Pet deleted"})

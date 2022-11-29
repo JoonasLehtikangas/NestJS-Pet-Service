@@ -15,8 +15,10 @@ const swaggerInfo = {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Initialization of pipe validator
   app.useGlobalPipes(new ValidationPipe());
 
+  // Initialization of swagger document
   const config = new DocumentBuilder()
     .setTitle(swaggerInfo.title)
     .setDescription(swaggerInfo.description)
